@@ -100,13 +100,12 @@ bool isBoardFull(const vector<char>& board) {
     return true;
 }
 
-// Alpha-Beta Pruned Minimax
 int minimax(vector<char>& board, int depth, bool isMaximizingPlayer, int alpha, int beta) {
     if (checkWin(board, 'O')) {
-        return 10 - depth;  // Depth factor for faster wins
+        return 10 - depth;  
     }
     if (checkWin(board, 'X')) {
-        return depth - 10;  // Depth factor for slower losses
+        return depth - 10;  
     }
     if (isBoardFull(board)) {
         return 0;
@@ -121,7 +120,7 @@ int minimax(vector<char>& board, int depth, bool isMaximizingPlayer, int alpha, 
                 board[i] = ' ';
                 alpha = max(alpha, best);
                 if (beta <= alpha) {
-                    break; // Beta cut-off
+                    break; 
                 }
             }
         }
@@ -135,7 +134,7 @@ int minimax(vector<char>& board, int depth, bool isMaximizingPlayer, int alpha, 
                 board[i] = ' ';
                 beta = min(beta, best);
                 if (beta <= alpha) {
-                    break; // Alpha cut-off
+                    break; 
                 }
             }
         }
